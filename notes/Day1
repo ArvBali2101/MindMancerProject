@@ -1,0 +1,19 @@
+
+# 🗓️ Day 1 – Authenticator Module
+
+## ✅ What I Did
+- Created `Authenticator` class
+- Handles password check and tracks login attempts
+- Added simulated test with colored output
+- Wrote Makefile to build/run test easily
+
+## 🧪 Test Logic
+- Hardcoded attempts: {"welcome1", "welcome1", "welcome"}
+- Should succeed on 3rd attempt
+- Displays colors (red, green, blue)
+
+## 🔧 Commands
+
+```bash
+make simtest   # Compile and run test
+make clean     # Remove compiled binary
