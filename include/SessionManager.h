@@ -1,51 +1,49 @@
-#pragma once  // Prevents multiple inclusion of this header during compilation
+#pragma once  // Prevents multiple inclusion of this header
 
-#include <atomic>
 #include <chrono>
 #include <iostream>
-#include <thread>
-#ifdef _WIN32
-#include <conio.h>
-#else
-#include <termios.h>
-#include <unistd.h>
-#include <fcntl.h>
-#endif
-
+#include <string>
 using namespace std;
 
-// Base class for session timers (e.g., WorkSession, BreakSession)
+// Forward declaration
+class TaskLogger;
+
+// Base session timer class with pause/resume/stop and logging
 class SessionManager {
  protected:
-  int myDuration;            // Total session duration in seconds
-  atomic<bool> myIsRunning;  // True if the timer is currently active
-  atomic<bool> myIsPaused;   // True if the timer is paused
+  TaskLogger& myLogger;  // ✅ Logger reference
+  int myDuration;
+  bool myIsRunning;
+  bool myIsPaused;
 
-  // Time points for tracking start and pause moments
   chrono::steady_clock::time_point myStartTime;
   chrono::steady_clock::time_point myPauseTime;
-
-  // Total time spent in paused state
   chrono::seconds myPausedDuration;
 
  public:
-  SessionManager();           // Constructor
-  virtual ~SessionManager();  // Destructor
+  // ✅ Correct constructor with logger
+  SessionManager(TaskLogger& logger);
+  virtual ~SessionManager();
 
-  void setSessionDuration(int timerDuration);  // Sets duration
-  void startTimer();                           // Starts countdown
-  void stopTimer();                            // Stops session
-  void pauseTimer();                           // Pause timer
-  void resumeTimer();                          // Resume timer
-  void resetTimer();                           // Reset session
+  // Pure virtual methods for derived classes
+  virtual void startTask(string taskDescription) = 0;
+  virtual void stopTask() = 0;
 
+  // Timer controls
+  void setSessionDuration(int timerDuration);
+  void startTimer();
+  void stopTimer();
+  void pauseTimer();
+  void resumeTimer();
+  void resetTimer();
+
+  // Status queries
   bool isTimerRunning() const;
   bool isTimerPaused() const;
   bool isTimerExpired() const;
   int getRemainingTime() const;
 
-  virtual void updateTimer();    // Updates time / input
-  virtual void display() const;  // Print status
-  virtual void startTask(string taskDescription) = 0;
-  virtual void stopTask() = 0;
+  // Runtime updates
+  virtual void updateTimer();
+  virtual void display() const;
 };

@@ -1,6 +1,7 @@
 #pragma once  // Prevents multiple inclusion of this header file
 
 #include "SessionManager.h"
+#include "TaskLogger.h"
 #include "TimerCount.h"
 
 // Manages a single work session by inheriting from SessionManager.
@@ -12,13 +13,13 @@ class WorkSessionManager : public SessionManager {
   int mySessionDuration;     // Duration of the current work session
 
  public:
-  // Constructor: Takes a TimerCount reference
-  WorkSessionManager(TimerCount& timerCount);
+  // Constructor: Takes a TaskLogger and a TimerCount reference
+  WorkSessionManager(TaskLogger& logger, TimerCount& timerCount);
 
-  // Starts the work session and begins countdown
+  // Starts the work session and begins logging and countdown
   void startTask(string taskDescription) override;
 
-  // Stops the session and ends the timer
+  // Stops the session and logs the event
   void stopTask() override;
 
   // Sets the work session duration in seconds

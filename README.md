@@ -78,3 +78,33 @@ Implement a modular, interactive work session timer using:
 Run:
 ```bash
 make test_work
+
+✅ Day 3 – Breaks, Quotes, and Summary
+
+### 🎯 Features Added
+
+- **BreakSessionManager**: After every work session, triggers a short break. After every 4th session, a long break.
+- **MotivationalQuoteManager**: Periodically shows motivational quotes during work to keep morale high.
+- **SessionSummary**: Parses the task log and displays:
+  - Total number of sessions
+  - Active duration per session
+  - Total active time spent
+
+### 🧪 Tests Written
+- `TestBreakSessionManager.cpp`
+- `TestMotivationalQuoteManager.cpp`
+- `TestSessionSummary.cpp`
+
+### 🧩 Dependencies
+- Works alongside:
+  - `SessionManager` (abstract base)
+  - `TaskLogger` (for logging)
+  - `TimerCount` (for tracking session count)
+
+---
+
+## 🛠 Running Day 3
+
+```bash
+make day3           # Full feature run
+make test_day3      # Runs all 3 Day 3 tests
