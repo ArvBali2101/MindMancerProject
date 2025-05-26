@@ -5,8 +5,13 @@
 #include <iostream>
 #include <thread>
 #ifdef _WIN32
-#include <conio.h>  // For _kbhit() and _getch() input detection (Windows only)
+#include <conio.h>
+#else
+#include <termios.h>
+#include <unistd.h>
+#include <fcntl.h>
 #endif
+
 using namespace std;
 
 // Base class for session timers (e.g., WorkSession, BreakSession)

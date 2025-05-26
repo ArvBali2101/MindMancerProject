@@ -14,6 +14,8 @@ int main() {
   // Create a WorkSessionManager with the TimerCount (no logger needed)
   WorkSessionManager workSession(myTimerCount);
 
+  int choice;
+
   while (true) {
     cout << "\n==== MindMancer – Day 2 ====\n";
     cout << "1. Start Work Session\n";
@@ -21,7 +23,8 @@ int main() {
     cout << "3. Exit\n";
     cout << "Choice: ";
 
-    int choice;
+    cin.clear();             // ✅ Clear any previous error
+    cin.ignore(1000, '\n');  // ✅ Remove leftover keystrokes from input buffer
     cin >> choice;
 
     if (choice == 1) {
@@ -32,13 +35,23 @@ int main() {
       workSession.startTask("Work Session");
 
       // While the timer is running, keep updating
-      while (workSession.isTimerRunning()) {
+      while (true) {
         workSession.updateTimer();
+
+        // ✅ Break when timer ends or user presses 'q'
+        if (!workSession.isTimerRunning()) break;
+
         this_thread::sleep_for(chrono::milliseconds(500));
       }
 
-      // Stop the session
+      // Stop the session explicitly
       workSession.stopTask();
+
+      // ✅ Final fix: clean any leftover characters in the buffer
+      cin.clear();
+      while (cin.peek() != '\n' && cin.peek() != EOF) {
+        cin.get();
+      }
     } else if (choice == 2) {
       // Show how many sessions have been completed
       myTimerCount.display();
