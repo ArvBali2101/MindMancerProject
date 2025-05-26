@@ -32,3 +32,49 @@ MindMancerProject/
 ```bash
 make simtest    # Build and run simulated login
 make clean      # Remove compiled files
+
+# ✅ Day 2 – Work Timer with Pause / Resume / Stop
+
+---
+
+## 🎯 Objective
+
+Implement a modular, interactive work session timer using:
+- Countdown logic
+- Pause (`p`), Resume (`r`), and Stop (`q`)
+- Threaded timer logic
+- Inheritance-based class design (`SessionManager`)
+- Clean folder structure, proper Makefile, README, and Notes
+
+---
+
+## 🔧 Features Implemented
+
+- `SessionManager`: Abstract timer base class with pause/resume/stop
+- `WorkSessionManager`: Controls a Pomodoro-style session
+- `TimerCount`: Tracks completed work sessions
+- `main_day2.cpp`: CLI-driven UI with menu
+- Input instructions shown during runtime
+- Compatible with Windows/Linux (`conio.h` use guarded)
+
+---
+
+## 🧪 Testing
+
+### ✔️ Manual:
+- Run `make day2` and interact with:
+  - `1` Start session
+  - `2` Show session count
+  - `3` Exit
+  - Use `p`, `r`, `q` during session
+
+### ✔️ Unit Test:
+- File: `test/TestWorkSessionManager.cpp`
+- Covers:
+  - Setting session duration
+  - Timer count increment
+  - Pause/resume state check
+
+Run:
+```bash
+make test_work

@@ -1,0 +1,30 @@
+# ✅ Day 2 – Work Timer with Pause / Resume / Stop
+
+## 🎯 Objective
+Implement a work session timer (like Pomodoro) with:
+- Countdown logic
+- Pause (p), Resume (r), and Stop (s)
+- Threaded timer logic
+- Inheritance-based class structure
+- Clean folder layout, Makefile, README, and Notes
+
+## 🔧 Features Implemented
+- `SessionManager`: base timer class with state and controls
+- `WorkSessionManager`: manages a Pomodoro-style session
+- `TimerCount`: tracks number of sessions completed
+- Key input for pause/resume/stop (Windows-compatible)
+- Live CLI-driven timer
+
+## 🧪 Testing
+- `TestWorkSessionManager.cpp` added under `test/`
+- Unit tests for:
+  - setSessionDuration()
+  - incrementTimerCount()
+  - pause/resume flow
+- Use `make test_work` to run tests
+
+## 🛠️ Run Instructions
+```bash
+make day2       # Build and run Day 2
+make test_work  # Compile and run test file
+make clean      # Delete binaries
