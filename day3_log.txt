@@ -34,3 +34,9 @@ Pomodoro Work 4 ended Mon May 26 19:52:13 2025
 Pomodoro Break started Mon May 26 19:52:13 2025
 Pomodoro Break ended Mon May 26 19:52:28 2025
 ################################################
+################################################
+Work Session started Mon May 26 21:31:30 2025
+Work Session Paused Mon May 26 21:31:37 2025
+Work Session Resumed Mon May 26 21:31:42 2025
+Work Session ended Mon May 26 21:31:45 2025
+################################################

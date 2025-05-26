@@ -1,15 +1,14 @@
 #include "SessionManager.h"
 
 #include "TaskLogger.h"
-#include "SessionManager.h"
-#include "TaskLogger.h"
 
 #ifndef _WIN32
+#include <fcntl.h>
 #include <termios.h>
 #include <unistd.h>
-#include <fcntl.h>
+#else
+#include <conio.h>
 #endif
-
 
 SessionManager::SessionManager(TaskLogger& logger)
     : myLogger(logger),

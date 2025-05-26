@@ -1,3 +1,4 @@
+
 #include <chrono>
 #include <iostream>
 #include <thread>
@@ -29,13 +30,13 @@ int main() {
     cout << "2. Start Break Session\n";
     cout << "3. Show Motivational Quote Info\n";
     cout << "4. Show Session Summary\n";
-    cout << "5. Exit\n";
-    cout << "6. Run Full Pomodoro Cycle (4x)\n";
+    cout << "5. Run Full Pomodoro Cycle (4x)\n";
+    cout << "6. Exit\n";
     cout << "Choice: ";
     cin >> choice;
 
     if (choice == 1) {
-      workSession.setSessionDuration(10);
+      workSession.setSessionDuration(1500);
       workSession.startTask("Work Session");
       quoteManager.startTask("Work Session");
 
@@ -50,7 +51,7 @@ int main() {
     }
 
     else if (choice == 2) {
-      breakSession.setSessionDuration(5);
+      breakSession.setSessionDuration(300);
       breakSession.startTask("Break Session");
 
       while (breakSession.isTimerRunning()) {
@@ -72,10 +73,10 @@ int main() {
       summary.showTotalTimeSpent();
     }
 
-    else if (choice == 6) {
-      for (int i = 1; i <= 4; ++i) {
+    else if (choice == 5) {
+      for (int i = 0; i < 4; i++) {
         // === Work Session ===
-        workSession.setSessionDuration(10);  // demo = 10s
+        workSession.setSessionDuration(1500);  // demo = 10s
         workSession.startTask("Pomodoro Work " + to_string(i));
         quoteManager.startTask("Pomodoro Work");
 
@@ -89,7 +90,7 @@ int main() {
         quoteManager.stopTask();
 
         // === Break Session ===
-        breakSession.setSessionDuration(5);  // demo = 5s
+        breakSession.setSessionDuration(300);  // demo = 5s
         breakSession.startTask("Pomodoro Break");
 
         while (breakSession.isTimerRunning()) {
@@ -101,7 +102,7 @@ int main() {
       }
     }
 
-    else if (choice == 5) {
+    else if (choice == 6) {
       cout << "Exiting Day 3 session. Stay productive!\n";
       break;
     }
