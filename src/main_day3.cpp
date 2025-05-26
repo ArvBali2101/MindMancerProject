@@ -30,11 +30,12 @@ int main() {
     cout << "3. Show Motivational Quote Info\n";
     cout << "4. Show Session Summary\n";
     cout << "5. Exit\n";
+    cout << "6. Run Full Pomodoro Cycle (4x)\n";
     cout << "Choice: ";
     cin >> choice;
 
     if (choice == 1) {
-      workSession.setSessionDuration(10);  // 10 sec for testing
+      workSession.setSessionDuration(10);
       workSession.startTask("Work Session");
       quoteManager.startTask("Work Session");
 
@@ -46,8 +47,10 @@ int main() {
 
       workSession.stopTask();
       quoteManager.stopTask();
-    } else if (choice == 2) {
-      breakSession.setSessionDuration(5);  // base break
+    }
+
+    else if (choice == 2) {
+      breakSession.setSessionDuration(5);
       breakSession.startTask("Break Session");
 
       while (breakSession.isTimerRunning()) {
@@ -56,17 +59,54 @@ int main() {
       }
 
       breakSession.stopTask();
-    } else if (choice == 3) {
+    }
+
+    else if (choice == 3) {
       quoteManager.display();
-    } else if (choice == 4) {
+    }
+
+    else if (choice == 4) {
       summary.readLogFile();
       summary.display();
       summary.showTaskDurations();
       summary.showTotalTimeSpent();
-    } else if (choice == 5) {
+    }
+
+    else if (choice == 6) {
+      for (int i = 1; i <= 4; ++i) {
+        // === Work Session ===
+        workSession.setSessionDuration(10);  // demo = 10s
+        workSession.startTask("Pomodoro Work " + to_string(i));
+        quoteManager.startTask("Pomodoro Work");
+
+        while (workSession.isTimerRunning()) {
+          workSession.updateTimer();
+          quoteManager.update();
+          this_thread::sleep_for(chrono::milliseconds(500));
+        }
+
+        workSession.stopTask();
+        quoteManager.stopTask();
+
+        // === Break Session ===
+        breakSession.setSessionDuration(5);  // demo = 5s
+        breakSession.startTask("Pomodoro Break");
+
+        while (breakSession.isTimerRunning()) {
+          breakSession.updateTimer();
+          this_thread::sleep_for(chrono::milliseconds(500));
+        }
+
+        breakSession.stopTask();
+      }
+    }
+
+    else if (choice == 5) {
       cout << "Exiting Day 3 session. Stay productive!\n";
       break;
-    } else {
+    }
+
+    else {
       cout << "Invalid input. Try again.\n";
     }
   }
