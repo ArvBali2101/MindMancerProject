@@ -15,19 +15,39 @@ using namespace std;
 int main() {
   TimerCount timerCount;
   TaskLogger logger;
-  logger.setLogFileName("day3_log.txt");
+  logger.setLogFileName("day4_log.txt");
 
   SessionConfigManager config;
+
+  // ✅ User-defined durations
+  int workDuration;
+  int breakDuration;
+
+  cout << "Enter Work Duration in seconds (Default = 1500 for 25 min): ";
+  cin >> workDuration;
+  if (workDuration > 0) {
+    config.setDefaultWorkDuration(workDuration);
+  } else {
+    cout << "Input invalid. Using default.\n";
+  }
+
+  cout << "Enter Break Duration in seconds (Default = 300 for 5 min): ";
+  cin >> breakDuration;
+  if (breakDuration > 0) {
+    config.setDefaultBreakDuration(breakDuration);
+  } else {
+    cout << "Input invalid. Using default.\n";
+  }
 
   WorkSessionManager workSession(logger, timerCount);
   BreakSessionManager breakSession(logger, timerCount);
   MotivationalQuoteManager quoteManager(10);  // every 10 sec
-  SessionSummary summary("day3_log.txt");
+  SessionSummary summary("day4_log.txt");
 
   int choice;
 
   while (true) {
-    cout << "\n==== MindMancer – Day 3 Menu ====\n";
+    cout << "\n==== MindMancer – Day 4 Menu ====\n";
     cout << "1. Start Work Session\n";
     cout << "2. Start Break Session\n";
     cout << "3. Show Motivational Quote Info\n";
@@ -77,7 +97,6 @@ int main() {
 
     else if (choice == 5) {
       for (int i = 0; i < 4; i++) {
-        // === Work Session ===
         workSession.setSessionDuration(config.getDefaultWorkDuration());
         workSession.startTask("Pomodoro Work " + to_string(i));
         quoteManager.startTask("Pomodoro Work");
@@ -91,7 +110,6 @@ int main() {
         workSession.stopTask();
         quoteManager.stopTask();
 
-        // === Break Session ===
         breakSession.setSessionDuration(config.getDefaultBreakDuration());
         breakSession.startTask("Pomodoro Break");
 
@@ -105,7 +123,7 @@ int main() {
     }
 
     else if (choice == 6) {
-      cout << "Exiting Day 3 session. Stay productive!\n";
+      cout << "Exiting Day 4 session. Stay productive!\n";
       break;
     }
 

@@ -108,3 +108,39 @@ make test_work
 ```bash
 make day3           # Full feature run
 make test_day3      # Runs all 3 Day 3 tests
+
+✅ Day 4 Objective: **User Personalization via Config Manager**
+
+Day 4 introduces a configuration system that allows the user to define their own Pomodoro session durations.
+
+---
+
+### 🎯 Features Added
+
+- **SessionConfigManager**
+  - Stores default work and break session durations
+  - Default: 25 min (1500s) work, 5 min (300s) break
+  - Can be reused in all future session flows
+
+- **Updated main_day3.cpp**
+  - Now supports dynamic durations from `SessionConfigManager`
+  - Used in both manual session and full 4x Pomodoro cycle
+
+- **New Test File**
+  - `TestSessionConfigManager.cpp`
+  - Validates default values and custom setting functionality
+## 🛠 How to Use
+
+```bash
+make day3           # Runs final app with config support
+make test_day4      # Runs test for SessionConfigManager
+
+ 🧠 Outcome
+
+This completes the core MindMancer system with:
+- Full Pomodoro cycles
+- Motivation
+- Logging
+- Configurable sessions (Day 4)
+
+Ready for personalization and real use!

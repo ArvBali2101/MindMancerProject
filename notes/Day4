@@ -1,0 +1,31 @@
+📝 Day 4 Notes – MindMancer
+
+✔️ Goal: Let users customize their session durations using a dedicated config manager class.
+
+---
+
+### ✅ Key Additions:
+
+1. **SessionConfigManager**
+   - `getDefaultWorkDuration()` returns 1500s (25 min)
+   - `getDefaultBreakDuration()` returns 300s (5 min)
+   - Can be manually changed via `setDefaultWorkDuration(int)` etc.
+
+2. **Integration**
+   - `main_day3.cpp` now uses SessionConfigManager values when setting durations for:
+     - Work sessions
+     - Break sessions
+     - Pomodoro cycles
+
+3. **Test File**
+   - `TestSessionConfigManager.cpp`
+   - Validates both default and updated values
+
+---
+
+🧪 Test Cases:
+- Asserts that defaults are correctly 1500 and 300
+- Changes values to 1200 and 180
+- Confirms setters/getters work
+
+---
