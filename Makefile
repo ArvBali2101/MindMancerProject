@@ -4,9 +4,8 @@ CXXFLAGS = -std=c++11 -Wall -pthread
 INCLUDE = -Iinclude
 
 # === DAY 1 ===
-DAY1_SRC = src/main_day1.cpp src/Authenticator.cpp
 day1:
-	$(CXX) $(CXXFLAGS) $(INCLUDE) $(DAY1_SRC) -o mindmancer_day1
+	$(CXX) $(CXXFLAGS) $(INCLUDE) src/main_day1.cpp src/Authenticator.cpp -o mindmancer_day1
 	./mindmancer_day1
 
 test_day1:
@@ -14,14 +13,13 @@ test_day1:
 	./test_day1
 
 # === DAY 2 ===
-DAY2_SRC = src/main_day2.cpp \
-           src/SessionManager.cpp \
-           src/WorkSessionManager.cpp \
-           src/TimerCount.cpp \
-           src/TaskLogger.cpp
-
 day2:
-	$(CXX) $(CXXFLAGS) $(INCLUDE) $(DAY2_SRC) -o mindmancer_day2
+	$(CXX) $(CXXFLAGS) $(INCLUDE) \
+	src/main_day2.cpp \
+	src/SessionManager.cpp \
+	src/WorkSessionManager.cpp \
+	src/TimerCount.cpp \
+	src/TaskLogger.cpp -o mindmancer_day2
 	./mindmancer_day2
 
 test_day2:
@@ -33,17 +31,17 @@ test_day2:
 	./test_day2
 
 # === DAY 3 ===
-DAY3_SRC = src/main_day3.cpp \
-           src/SessionManager.cpp \
-           src/WorkSessionManager.cpp \
-           src/BreakSessionManager.cpp \
-           src/TimerCount.cpp \
-           src/TaskLogger.cpp \
-           src/MotivationalQuoteManager.cpp \
-           src/SessionSummary.cpp
-
 day3:
-	$(CXX) $(CXXFLAGS) $(INCLUDE) $(DAY3_SRC) -o mindmancer_day3
+	$(CXX) $(CXXFLAGS) $(INCLUDE) \
+	src/main_day3.cpp \
+	src/SessionManager.cpp \
+	src/WorkSessionManager.cpp \
+	src/BreakSessionManager.cpp \
+	src/TimerCount.cpp \
+	src/TaskLogger.cpp \
+	src/MotivationalQuoteManager.cpp \
+	src/SessionSummary.cpp \
+	src/SessionConfigManager.cpp -o mindmancer_day3
 	./mindmancer_day3
 
 test_day3: test_break test_quote test_summary
@@ -69,8 +67,15 @@ test_summary:
 	src/SessionSummary.cpp -o test_summary
 	./test_summary
 
+# === DAY 4 ===
+test_day4:
+	$(CXX) $(CXXFLAGS) $(INCLUDE) \
+	test/TestSessionConfigManager.cpp \
+	src/SessionConfigManager.cpp -o test_config
+	./test_config
+
 # === CLEAN ===
 clean:
 	rm -f mindmancer_day1 mindmancer_day2 mindmancer_day3 \
-	      test_day1 test_day2 test_break test_quote test_summary \
+	      test_day1 test_day2 test_break test_quote test_summary test_config \
 	      *.log
