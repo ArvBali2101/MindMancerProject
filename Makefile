@@ -1,19 +1,32 @@
+# ===== Compiler and Flags =====
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall
+CXXFLAGS = -std=c++11 -Wall -pthread
 INCLUDE = -Iinclude
 
-MAIN_SRC = src/main.cpp src/Authenticator.cpp
-SIMTEST_SRC = test/test_auth_simulated.cpp src/Authenticator.cpp
+# ===== Day 1 (Login System) =====
+DAY1_SRC = src/main_day1.cpp src/Authenticator.cpp
 
-# Run actual user input login
-run:
-	$(CXX) $(CXXFLAGS) $(INCLUDE) $(MAIN_SRC) -o mindmancer
-	./mindmancer
+day1:
+	$(CXX) $(CXXFLAGS) $(INCLUDE) $(DAY1_SRC) -o mindmancer_day1
+	./mindmancer_day1
 
-# Simulated test (hardcoded attempts)
-simtest:
-	$(CXX) $(CXXFLAGS) $(INCLUDE) $(SIMTEST_SRC) -o test_sim
-	./test_sim
+# ===== Day 2 (Work Timer System) =====
+DAY2_SRC = src/main_day2.cpp \
+           src/SessionManager.cpp \
+           src/WorkSessionManager.cpp \
+           src/TimerCount.cpp \
+           src/TaskLogger.cpp
 
+day2:
+	$(CXX) $(CXXFLAGS) $(INCLUDE) $(DAY2_SRC) -o mindmancer_day2
+	./mindmancer_day2
+
+# ===== Unit Test: WorkSessionManager =====
+test_work:
+	$(CXX) $(CXXFLAGS) $(INCLUDE) test/TestWorkSessionManager.cpp \
+	src/SessionManager.cpp src/WorkSessionManager.cpp src/TimerCount.cpp -o test_work
+	./test_work
+
+# ===== Cleanup =====
 clean:
-	rm -f mindmancer test_sim
+	rm -f mindmancer_day1 mindmancer_day2 test_work
