@@ -97,4 +97,4 @@ test_day4:
 clean:
 	rm -f mindmancer_day1 mindmancer_day2 mindmancer_day3 mindmancer_day4 \
 	      test_day1 test_day2 test_break test_quote test_summary test_config \
-	      *.log
+	      *.txt

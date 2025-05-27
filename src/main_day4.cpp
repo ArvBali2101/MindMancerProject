@@ -65,7 +65,7 @@ int main() {
   SessionManager* breakSession = new BreakSessionManager(logger, timerCount);
   MotivationalQuoteManager* quoteManager =
       new MotivationalQuoteManager(10);  // every 10 sec
-  SessionSummary* summary = new SessionSummary("day3_log.txt");
+  SessionSummary* summary = new SessionSummary("day4_log.txt");
 
   int choice;
 
