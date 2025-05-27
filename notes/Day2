@@ -26,5 +26,5 @@ Implement a work session timer (like Pomodoro) with:
 ## 🛠️ Run Instructions
 ```bash
 make day2       # Build and run Day 2
-make test_work  # Compile and run test file
+make test_day2  # Compile and run test file
 make clean      # Delete binaries

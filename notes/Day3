@@ -39,3 +39,9 @@
 
 🧩 Result:
 > Successfully tested and integrated break detection, motivational updates, and log summaries into Day 3 system.
+
+## 🛠️ Run Instructions
+```bash
+make day3       # Build and run Day 3
+make test_day3  # Compile and run test file
+make clean      # Delete binaries

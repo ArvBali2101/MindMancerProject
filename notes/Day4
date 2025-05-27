@@ -29,3 +29,8 @@
 - Confirms setters/getters work
 
 ---
+## 🛠️ Run Instructions
+```bash
+make day4      # Build and run Day 4
+make test_day4  # Compile and run test file
+make clean      # Delete binaries

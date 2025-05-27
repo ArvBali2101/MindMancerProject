@@ -15,5 +15,6 @@
 ## 🔧 Commands
 
 ```bash
-make simtest   # Compile and run test
+make day1 #Run day1
+make test_day1  # Compile and run test
 make clean     # Remove compiled binary
