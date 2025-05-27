@@ -113,6 +113,7 @@ int main() {
 
     else {
       cout << "Invalid input. Try again.\n";
+      return 0;
     }
   }
 
