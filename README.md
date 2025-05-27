@@ -30,7 +30,7 @@ MindMancerProject/
 ## 🛠️ How to Run
 
 ```bash
-make simtest    # Build and run simulated login
+make test_day1    # Build and run simulated login
 make clean      # Remove compiled files
 
 # ✅ Day 2 – Work Timer with Pause / Resume / Stop
