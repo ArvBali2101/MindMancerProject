@@ -26,3 +26,31 @@ Pause Resume Test started Tue May 27 14:30:56 2025
 Pause Resume Test Paused Tue May 27 14:30:56 2025
 Pause Resume Test Resumed Tue May 27 14:30:56 2025
 Pause Resume Test Timer stopped Tue May 27 14:30:56 2025
+################################################
+Dummy Session started Tue May 27 14:50:59 2025
+Dummy Session Timer stopped Tue May 27 14:51:00 2025
+Dummy Session ended Tue May 27 14:51:00 2025
+################################################
+################################################
+Pause Resume Test started Tue May 27 14:51:00 2025
+Pause Resume Test Paused Tue May 27 14:51:00 2025
+Pause Resume Test Resumed Tue May 27 14:51:00 2025
+Pause Resume Test Timer stopped Tue May 27 14:51:00 2025
+################################################
+Test Break started Tue May 27 14:51:42 2025
+Test Break ended Tue May 27 14:51:42 2025
+################################################
+################################################
+Dummy Session started Tue May 27 14:53:26 2025
+Dummy Session Timer stopped Tue May 27 14:53:27 2025
+Dummy Session ended Tue May 27 14:53:27 2025
+################################################
+################################################
+Pause Resume Test started Tue May 27 14:53:27 2025
+Pause Resume Test Paused Tue May 27 14:53:27 2025
+Pause Resume Test Resumed Tue May 27 14:53:27 2025
+Pause Resume Test Timer stopped Tue May 27 14:53:27 2025
+################################################
+Test Break started Tue May 27 14:53:31 2025
+Test Break ended Tue May 27 14:53:31 2025
+################################################

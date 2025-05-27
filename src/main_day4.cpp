@@ -22,13 +22,15 @@ int main() {
     cout << "Enter password to continue: ";
     cin >> inputPassword;
     if (auth->authenticate(inputPassword)) {
-      cout << "Welcome to FocusFlow(MindMancer)... " << endl;
+      cout << "\033[32m✅ User Authenticated\033[0m" << endl;
+      cout << "Welcome to MindMancer... " << endl;
       break;
     } else {
       if (auth->getNoOfAttemptsLeft() > 0) {
-        cout << "Wrong Password. Try again.. ";
+        cout << "\033[31m❌ Incorrect Password. Attempts left: "
+             << auth->getNoOfAttemptsLeft() << "\033[0m" << endl;
       } else {
-        cout << "Access Denied ";
+        cout << "\033[1;31m⛔ Invalid user - Access Denied\033[0m" << endl;
         return 1;
       }
     }
@@ -36,13 +38,13 @@ int main() {
 
   TimerCount timerCount;
   TaskLogger logger;
-  logger.setLogFileName("day3_log.txt");
+  logger.setLogFileName("day4_log.txt");
 
   SessionConfigManager config;
   int workDuration;
   int breakDuration;
 
-  cout << "Enter Work Duration (Default 25 mins)" << endl;
+  cout << "Enter Work Duration (Default 25 mins) in seconds:" << endl;
   cin >> workDuration;
   if (workDuration > 0) {
     config.setDefaultWorkDuration(workDuration);
@@ -50,7 +52,7 @@ int main() {
     cout << "Input value is less than 0.. setting default" << endl;
   }
 
-  cout << "Enter Break Duration (Default 5 mins)" << endl;
+  cout << "Enter Break Duration (Default 5 mins) in seconds:" << endl;
   cin >> breakDuration;
 
   if (breakDuration > 0) {
