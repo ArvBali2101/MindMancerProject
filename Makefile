@@ -19,7 +19,8 @@ day2:
 	src/SessionManager.cpp \
 	src/WorkSessionManager.cpp \
 	src/TimerCount.cpp \
-	src/TaskLogger.cpp -o mindmancer_day2
+	src/TaskLogger.cpp \
+	src/Authenticator.cpp -o mindmancer_day2
 	./mindmancer_day2
 
 test_day2:
@@ -28,7 +29,8 @@ test_day2:
 	src/SessionManager.cpp \
 	src/WorkSessionManager.cpp \
 	src/TaskLogger.cpp \
-	src/TimerCount.cpp -o test_day2
+	src/TimerCount.cpp \
+	src/Authenticator.cpp -o test_day2
 	./test_day2
 
 # === DAY 3 ===
@@ -42,7 +44,8 @@ day3:
 	src/TaskLogger.cpp \
 	src/MotivationalQuoteManager.cpp \
 	src/SessionSummary.cpp \
-	src/SessionConfigManager.cpp -o mindmancer_day3
+	src/SessionConfigManager.cpp \
+	src/Authenticator.cpp -o mindmancer_day3
 	./mindmancer_day3
 
 test_day3: test_break test_quote test_summary
@@ -53,7 +56,8 @@ test_break:
 	src/BreakSessionManager.cpp \
 	src/SessionManager.cpp \
 	src/TimerCount.cpp \
-	src/TaskLogger.cpp -o test_break
+	src/TaskLogger.cpp \
+	src/Authenticator.cpp -o test_break
 	./test_break
 
 test_quote:
@@ -79,7 +83,8 @@ day4:
 	src/TaskLogger.cpp \
 	src/MotivationalQuoteManager.cpp \
 	src/SessionSummary.cpp \
-	src/SessionConfigManager.cpp -o mindmancer_day4
+	src/SessionConfigManager.cpp \
+	src/Authenticator.cpp -o mindmancer_day4
 	./mindmancer_day4
 
 test_day4:

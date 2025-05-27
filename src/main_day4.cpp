@@ -2,9 +2,11 @@
 #include <iostream>
 #include <thread>
 
+#include "Authenticator.h"
 #include "BreakSessionManager.h"
 #include "MotivationalQuoteManager.h"
 #include "SessionConfigManager.h"
+#include "SessionManager.h"
 #include "SessionSummary.h"
 #include "TaskLogger.h"
 #include "TimerCount.h"
@@ -13,6 +15,25 @@
 using namespace std;
 
 int main() {
+  Authenticator* auth = new Authenticator("welcome", 3);
+  string inputPassword;
+
+  while (auth->getNoOfAttemptsLeft() > 0) {
+    cout << "Enter password to continue: ";
+    cin >> inputPassword;
+    if (auth->authenticate(inputPassword)) {
+      cout << "Welcome to FocusFlow(MindMancer)... " << endl;
+      break;
+    } else {
+      if (auth->getNoOfAttemptsLeft() > 0) {
+        cout << "Wrong Password. Try again.. ";
+      } else {
+        cout << "Access Denied ";
+        return 1;
+      }
+    }
+  }
+
   TimerCount timerCount;
   TaskLogger logger;
   logger.setLogFileName("day3_log.txt");
@@ -21,21 +42,21 @@ int main() {
   int workDuration;
   int breakDuration;
 
-  cout << "Enter Work Duration (Default 25 mins) in seconds" << endl;
+  cout << "Enter Work Duration (Default 25 mins)" << endl;
   cin >> workDuration;
   if (workDuration > 0) {
     config.setDefaultWorkDuration(workDuration);
   } else {
-    cout << "Invalid or zero input. Setting to default (25 mins)." << endl;
+    cout << "Input value is less than 0.. setting default" << endl;
   }
 
-  cout << "Enter Break Duration (Default 5 mins) in seconds" << endl;
+  cout << "Enter Break Duration (Default 5 mins)" << endl;
   cin >> breakDuration;
 
   if (breakDuration > 0) {
     config.setDefaultBreakDuration(breakDuration);
   } else {
-    cout << "Invalid or zero input. Setting to default (5 mins)." << endl;
+    cout << "Input value is less than 0.. setting default" << endl;
   }
 
   SessionManager* workSession = new WorkSessionManager(logger, timerCount);
@@ -65,8 +86,7 @@ int main() {
         while (workSession->isTimerRunning()) {
           workSession->updateTimer();
           quoteManager->update();
-          this_thread::sleep_for(chrono::milliseconds(500));
-          ;
+          this_thread::sleep_for(chrono::seconds(1));
         }
 
         workSession->stopTask();
@@ -79,8 +99,7 @@ int main() {
 
         while (breakSession->isTimerRunning()) {
           breakSession->updateTimer();
-          this_thread::sleep_for(chrono::milliseconds(500));
-          ;
+          this_thread::sleep_for(chrono::seconds(1));
         }
 
         breakSession->stopTask();
@@ -108,8 +127,7 @@ int main() {
           while (workSession->isTimerRunning()) {
             workSession->updateTimer();
             quoteManager->update();
-            this_thread::sleep_for(chrono::milliseconds(500));
-            ;
+            this_thread::sleep_for(chrono::seconds(1));
           }
 
           workSession->stopTask();
@@ -121,8 +139,7 @@ int main() {
 
           while (breakSession->isTimerRunning()) {
             breakSession->updateTimer();
-            this_thread::sleep_for(chrono::milliseconds(500));
-            ;
+            this_thread::sleep_for(chrono::seconds(1));
           }
 
           breakSession->stopTask();
@@ -139,10 +156,11 @@ int main() {
     }
   }
 
-  delete workSession;
-  delete breakSession;
-  delete quoteManager;
-  delete summary;
+  if (auth != nullptr) delete auth;
+  if (workSession != nullptr) delete workSession;
+  if (breakSession != nullptr) delete breakSession;
+  if (quoteManager != nullptr) delete quoteManager;
+  if (summary != nullptr) delete summary;
 
   return 0;
 }
