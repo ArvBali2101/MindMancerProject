@@ -35,7 +35,7 @@ int main() {
   if (breakDuration > 0) {
     config.setDefaultBreakDuration(breakDuration);
   } else {
-    cout <<  "Invalid or zero input. Setting to default (5 mins)." << endl;
+    cout << "Invalid or zero input. Setting to default (5 mins)." << endl;
   }
 
   SessionManager* workSession = new WorkSessionManager(logger, timerCount);

@@ -109,38 +109,53 @@ make test_work
 make day3           # Full feature run
 make test_day3      # Runs all 3 Day 3 tests
 
-✅ Day 4 Objective: **User Personalization via Config Manager**
-
-Day 4 introduces a configuration system that allows the user to define their own Pomodoro session durations.
+# 🧠 MindMancer – Day 4: Interactive Customization and Cleanup
 
 ---
 
-### 🎯 Features Added
+## ✅ Day 4 Highlights
 
-- **SessionConfigManager**
-  - Stores default work and break session durations
-  - Default: 25 min (1500s) work, 5 min (300s) break
-  - Can be reused in all future session flows
+Day 4 adds **customization and abstraction** to make the system feel truly user-centric and modular.
 
-- **Updated main_day3.cpp**
-  - Now supports dynamic durations from `SessionConfigManager`
-  - Used in both manual session and full 4x Pomodoro cycle
+---
 
-- **New Test File**
-  - `TestSessionConfigManager.cpp`
-  - Validates default values and custom setting functionality
+## 🎯 Features Added
+
+- 🔧 **User-Defined Durations**
+  - Users can input work and break durations at runtime
+  - Defaults: 25 minutes (1500s) work, 5 minutes (300s) break
+
+- 🧠 **Polymorphic Design**
+  - Work and Break sessions managed through base class `SessionManager*`
+  - Easier expansion, better OOP design
+
+- 🔁 **Full Pomodoro Automation**
+  - 4× cycles of [Work → Break]
+  - Automatically respects TimerCount and uses motivational quotes
+
+- 📄 **Updated Logging and Summaries**
+  - Logs to `day3_log.txt`
+  - Summary menu shows:
+    - Each task duration
+    - Total active time
+
+---
+
+## 📂 Project Files (Day 4)
+
+### 🔧 Source Files
+- `src/main_day4.cpp` – Interactive menu + full flow
+- `src/SessionConfigManager.cpp` – Config logic
+- `include/SessionConfigManager.h` – Config header
+
+### 🧪 Tests
+- `test/TestSessionConfigManager.cpp` – Unit test for config module
+
+---
+
 ## 🛠 How to Use
 
 ```bash
-make day3           # Runs final app with config support
-make test_day4      # Runs test for SessionConfigManager
-
- 🧠 Outcome
-
-This completes the core MindMancer system with:
-- Full Pomodoro cycles
-- Motivation
-- Logging
-- Configurable sessions (Day 4)
-
-Ready for personalization and real use!
+make clean
+make day4       # Builds and runs interactive MindMancer
+make test_day4  # Verifies SessionConfigManager logic
