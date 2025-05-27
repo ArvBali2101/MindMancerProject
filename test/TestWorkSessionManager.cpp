@@ -3,6 +3,7 @@
 #include <iostream>
 #include <thread>
 
+#include "../include/TaskLogger.h"
 #include "../include/TimerCount.h"
 #include "../include/WorkSessionManager.h"
 
@@ -11,7 +12,9 @@ using namespace std;
 // Test 1: Set and check session duration
 void testSessionDuration() {
   TimerCount timerCount;
-  WorkSessionManager session(timerCount);
+  TaskLogger logger;
+  logger.setLogFileName("test_log.txt");
+  WorkSessionManager session(logger, timerCount);
 
   session.setSessionDuration(20);
   assert(session.getRemainingTime() == 20);
@@ -21,7 +24,10 @@ void testSessionDuration() {
 // Test 2: Ensure TimerCount increments after a session
 void testTimerCountIncrement() {
   TimerCount timerCount;
-  WorkSessionManager session(timerCount);
+  TaskLogger logger;
+  logger.setLogFileName("test_log.txt");
+
+  WorkSessionManager session(logger, timerCount);
 
   int before = timerCount.getTimerCount();
   session.setSessionDuration(5);
@@ -29,6 +35,7 @@ void testTimerCountIncrement() {
 
   // Simulate running the timer briefly
   this_thread::sleep_for(chrono::seconds(1));
+  ;
   session.resetTimer();
   session.stopTask();
 
@@ -40,7 +47,10 @@ void testTimerCountIncrement() {
 // Test 3: Pause and resume functionality
 void testPauseResume() {
   TimerCount timerCount;
-  WorkSessionManager session(timerCount);
+  TaskLogger logger;
+  logger.setLogFileName("test_log.txt");
+
+  WorkSessionManager session(logger, timerCount);
 
   session.setSessionDuration(10);
   session.startTask("Pause Resume Test");

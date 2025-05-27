@@ -16,4 +16,7 @@ class TaskManager {
   // Stops the currently running task.
   // Must be implemented by all derived classes.
   virtual void stopTask() = 0;
+
+  // Virtual destructor to ensure proper cleanup of derived classes
+  virtual ~TaskManager() = default;
 };

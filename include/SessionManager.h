@@ -30,7 +30,7 @@ class SessionManager {
   virtual void stopTask() = 0;
 
   // Timer controls
-  void setSessionDuration(int timerDuration);
+  virtual void setSessionDuration(int timerDuration);
   void startTimer();
   void stopTimer();
   void pauseTimer();

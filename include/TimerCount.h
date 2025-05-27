@@ -19,6 +19,9 @@ class TimerCount {
   // Returns the current session count
   int getTimerCount();
 
+  // reset the current session count
+  void resetTimerCount();
+
   // Displays the current session count to the console
   void display() const;
 };

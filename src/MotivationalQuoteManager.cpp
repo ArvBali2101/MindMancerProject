@@ -34,6 +34,9 @@ MotivationalQuoteManager::MotivationalQuoteManager(int quoteIntervalSeconds)
   srand(time(nullptr));
 }
 
+// Destructor: destroys the object
+MotivationalQuoteManager::~MotivationalQuoteManager(){}
+  
 // Starts the motivational quote session and resets the last quote timer
 void MotivationalQuoteManager::startTask(string name) {
   myTaskName = name;

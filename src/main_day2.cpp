@@ -11,8 +11,12 @@ int main() {
   // Create a TimerCount object to track how many sessions have occurred
   TimerCount myTimerCount;
 
+  // Create a TaskLogger object to log the session
+  TaskLogger myLogger;
+  myLogger.setLogFileName("task_log2.txt");
+
   // Create a WorkSessionManager with the TimerCount (no logger needed)
-  WorkSessionManager workSession(myTimerCount);
+  WorkSessionManager workSession(myLogger, myTimerCount);
 
   int choice;
 
@@ -23,8 +27,6 @@ int main() {
     cout << "3. Exit\n";
     cout << "Choice: ";
 
-    cin.clear();             // ✅ Clear any previous error
-    cin.ignore(1000, '\n');  // ✅ Remove leftover keystrokes from input buffer
     cin >> choice;
 
     if (choice == 1) {
@@ -40,8 +42,8 @@ int main() {
 
         // ✅ Break when timer ends or user presses 'q'
         if (!workSession.isTimerRunning()) break;
-
         this_thread::sleep_for(chrono::milliseconds(500));
+        // this_thread::sleep_for(chrono::milliseconds(500));
       }
 
       // Stop the session explicitly
@@ -60,6 +62,7 @@ int main() {
       break;
     } else {
       cout << "Invalid input. Try again.\n";
+      break;
     }
   }
 

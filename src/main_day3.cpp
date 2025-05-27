@@ -1,4 +1,3 @@
-
 #include <chrono>
 #include <iostream>
 #include <thread>
@@ -19,7 +18,7 @@ int main() {
 
   WorkSessionManager workSession(logger, timerCount);
   BreakSessionManager breakSession(logger, timerCount);
-  MotivationalQuoteManager quoteManager(10);  // every 10 sec
+  MotivationalQuoteManager quoteManager(30);  // every 10 sec
   SessionSummary summary("day3_log.txt");
 
   int choice;
@@ -36,14 +35,15 @@ int main() {
     cin >> choice;
 
     if (choice == 1) {
-      workSession.setSessionDuration(1500);
+      workSession.setSessionDuration(10);
       workSession.startTask("Work Session");
       quoteManager.startTask("Work Session");
 
       while (workSession.isTimerRunning()) {
         workSession.updateTimer();
         quoteManager.update();
-        this_thread::sleep_for(chrono::milliseconds(500));
+        this_thread::sleep_for(chrono::seconds(1));
+        ;
       }
 
       workSession.stopTask();
@@ -51,12 +51,13 @@ int main() {
     }
 
     else if (choice == 2) {
-      breakSession.setSessionDuration(300);
+      breakSession.setSessionDuration(5);
       breakSession.startTask("Break Session");
 
       while (breakSession.isTimerRunning()) {
         breakSession.updateTimer();
-        this_thread::sleep_for(chrono::milliseconds(500));
+        this_thread::sleep_for(chrono::seconds(1));
+        ;
       }
 
       breakSession.stopTask();
@@ -74,6 +75,7 @@ int main() {
     }
 
     else if (choice == 5) {
+      timerCount.resetTimerCount();
       for (int i = 0; i < 4; i++) {
         // === Work Session ===
         workSession.setSessionDuration(1500);  // demo = 10s
@@ -83,7 +85,8 @@ int main() {
         while (workSession.isTimerRunning()) {
           workSession.updateTimer();
           quoteManager.update();
-          this_thread::sleep_for(chrono::milliseconds(500));
+          this_thread::sleep_for(chrono::seconds(1));
+          ;
         }
 
         workSession.stopTask();
@@ -95,7 +98,8 @@ int main() {
 
         while (breakSession.isTimerRunning()) {
           breakSession.updateTimer();
-          this_thread::sleep_for(chrono::milliseconds(500));
+          this_thread::sleep_for(chrono::seconds(1));
+          ;
         }
 
         breakSession.stopTask();

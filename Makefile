@@ -27,6 +27,7 @@ test_day2:
 	test/TestWorkSessionManager.cpp \
 	src/SessionManager.cpp \
 	src/WorkSessionManager.cpp \
+	src/TaskLogger.cpp \
 	src/TimerCount.cpp -o test_day2
 	./test_day2
 

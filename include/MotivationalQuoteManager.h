@@ -22,6 +22,9 @@ class MotivationalQuoteManager : public TaskManager {
   // Constructor: Sets how often to show quotes
   MotivationalQuoteManager(int quoteIntervalSeconds);
 
+  // Destructor: destroys the object
+  ~MotivationalQuoteManager();
+
   // Starts the quote display session
   void startTask(string taskName) override;
 

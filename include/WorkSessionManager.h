@@ -23,7 +23,7 @@ class WorkSessionManager : public SessionManager {
   void stopTask() override;
 
   // Sets the work session duration in seconds
-  void setSessionDuration(int sessionDuration);
+  void setSessionDuration(int sessionDuration) override;
 
   // Displays current session details (for debugging or output)
   void display() const;
