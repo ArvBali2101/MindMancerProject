@@ -49,7 +49,7 @@ int main() {
   if (workDuration > 0) {
     config.setDefaultWorkDuration(workDuration);
   } else {
-    cout << "Input value is less than 0.. setting default" << endl;
+    cout << "Input value is 0 or less than 0.. setting default" << endl;
   }
 
   cout << "Enter Break Duration (Default 5 mins) in seconds:" << endl;
@@ -58,7 +58,7 @@ int main() {
   if (breakDuration > 0) {
     config.setDefaultBreakDuration(breakDuration);
   } else {
-    cout << "Input value is less than 0.. setting default" << endl;
+    cout << "Input value is 0 or less than 0.. setting default" << endl;
   }
 
   SessionManager* workSession = new WorkSessionManager(logger, timerCount);
