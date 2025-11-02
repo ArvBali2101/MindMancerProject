@@ -1,0 +1,47 @@
+📝 Day 3 Notes – MindMancer
+
+✔️ Goal: Add automated breaks, motivational reinforcement, and session analysis.
+
+---
+
+1. ✅ BreakSessionManager
+   - Inherits from SessionManager
+   - Takes a TimerCount reference
+   - Uses `TimerCount % 4 == 0` logic for long breaks
+   - Respects base `startTask()`/`stopTask()` structure
+
+2. ✅ MotivationalQuoteManager
+   - Inherits from TaskManager
+   - Shows a new quote every N seconds
+   - Uses `srand()` to randomize
+   - Output via `update()`
+
+3. ✅ SessionSummary
+   - Reads log file written by TaskLogger
+   - Extracts `started`, `Paused`, `Resumed`, `ended` lines
+   - Computes accurate active time
+   - Outputs total time and durations
+
+---
+
+🧪 Testing Approach:
+- Break test: Assert timer starts
+- Quote test: Print quotes for 3 seconds
+- Summary test: Print parsed result
+
+---
+
+💡 Challenges Faced:
+- Had to reintroduce `myLogger` via constructor into `SessionManager`
+- Needed platform-compatible input (termios on Linux)
+
+---
+
+🧩 Result:
+> Successfully tested and integrated break detection, motivational updates, and log summaries into Day 3 system.
+
+## 🛠️ Run Instructions
+```bash
+make day3       # Build and run Day 3
+make test_day3  # Compile and run test file
+make clean      # Delete binaries
